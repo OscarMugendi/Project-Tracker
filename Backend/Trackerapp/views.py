@@ -405,7 +405,6 @@ class StyleProjectsView(generics.ListAPIView):
 
 
 class NewProjectView(generics.ListAPIView):
-    permission_classes = (IsAuthenticated,)
     queryset = Project.objects.all()
     serializer_class = NewProjectSerializer
 

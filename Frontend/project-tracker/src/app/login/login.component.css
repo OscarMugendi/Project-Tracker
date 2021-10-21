@@ -116,7 +116,9 @@
     font-size:13px;
     margin-bottom:0;
   }
+
   .footer-dark li {
+
     font-size:20px;
   }
   
@@ -152,4 +154,9 @@
    
   .sideline:after {
     margin: 0 0 0 20px;
+
+
   }
+   
+
+

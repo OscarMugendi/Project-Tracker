@@ -1,0 +1,36 @@
+.addprojectpage {
+    background-image: url("https://images.unsplash.com/photo-1633113092754-523fd2d9a90c?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    /* width: 100%; */
+  }
+
+  h4{
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 70%;
+      margin-right: auto;
+      margin-left: auto;
+  }
+
+  .vl{
+    border-right: 2px solid green;
+    
+  }
+
+  
+  input{
+    border-radius: 10px;
+    height: 5vh;
+    max-width: 400px;
+  }
+
+  form{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  

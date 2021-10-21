@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProjectPageComponent } from './project-page/project-page.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
-import { ProjectFormComponent } from './project-form/project-form.component';
 import { AuthGuard } from './auth.guard';
+import { UploadprojectComponent } from './uploadproject/uploadproject.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CohortsComponent } from './cohorts/cohorts.component';
 import { StylesComponent } from './styles/styles.component';
@@ -26,6 +26,13 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
 
+ 
+  { path: 'add-projects', component:UploadprojectComponent },
+ 
+ 
+  { path: 'cohorts', component:CohortsComponent },
+
+
   { path: 'projects',
     children: [
       { path: '', component: ProjectPageComponent },
@@ -33,7 +40,7 @@ const routes: Routes = [
     ]
   },
   { path: 'profile', component:StudentProfileComponent,canActivate:[AuthGuard] },
-  { path: 'add-projects', component:ProjectFormComponent },
+ 
   { path: 'profiles',
     children: [
       { path: '', component: ProfileComponent },
@@ -46,6 +53,7 @@ const routes: Routes = [
       { path: ':id', component: CohortProfileComponent },
     ]
   },
+
   { path: 'styles', component:StylesComponent },
   { path: 'android', component: AndroidComponent },
   { path: 'fullstack', component: FullstackComponent },
@@ -57,7 +65,9 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
+
     RouterModule.forRoot(routes, { useHash: true })
+
   ],
   exports: [RouterModule]
 })

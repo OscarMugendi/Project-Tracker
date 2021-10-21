@@ -1,10 +1,6 @@
 # ProjectTracker
 
-<<<<<<< HEAD
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
-=======
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
->>>>>>> 568be1c6065830ce2f5288f0218877de014c9f60
 
 ## Development server
 

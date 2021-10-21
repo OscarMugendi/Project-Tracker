@@ -60,7 +60,4 @@ urlpatterns = [
 
     url(r'api/user/$', CurrentUserView.as_view(), name='api_user'),    # Current User
     url(r'api/user/profile/$', CurrentUserProfileView.as_view(), name='api_user_profile'),    # Current User Profile
-
-    #url(r'api/projects/(?P<pk>[0-9]+)/image/update/$', UploadProjectImageView.as_view(), name='api_project_image_upload'),    # Update Project Image
-    #url(r'api/students/(?P<pk>[0-9]+)/image/update/$', UploadProfilePicView.as_view(), name='api_profile_pic_upload'),    # Update Profile Pic
 ]

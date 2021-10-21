@@ -1,4 +1,4 @@
-#!/home/moringaschool/Documents/Project-Tracker/Backend/virtual/bin/python
+#!/home/oscar/Documents/GitHub/Project-Tracker/Backend/virtual/bin/python3.6
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

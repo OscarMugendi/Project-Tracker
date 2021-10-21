@@ -35,14 +35,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return CustomUser.objects.create_user(**validated_data)
 
 
-# class EmailVerificationSerializer(serializers.ModelSerializer):
-#     token = serializers.CharField(max_length=500)
-
-#     class Meta:
-#         model = CustomUser
-#         fields = ['token']
-
-
 class LoginSerializer(serializers.ModelSerializer):
     email=serializers.EmailField(max_length=255, min_length=3)
     password=serializers.CharField(max_length=68, min_length=6, write_only=True)
@@ -64,13 +56,6 @@ class LoginSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         email=attrs.get('email', '')
         password=attrs.get('password', '')
-        # filtered_user_by_email = CustomUser.objects.filter(email=email)
-        # user=auth.authenticate(email=email, password=password)
-
-        # if filtered_user_by_email.exists() and filtered_user_by_email[0].auth_provider !='email':
-        #     raise AuthenticationFailed(
-        #         detail='Please continue your login using ' + filtered_user_by_email[0].auth_provider
-        #     )
 
         user = auth.authenticate(email=email,password=password)
 
@@ -89,31 +74,6 @@ class LoginSerializer(serializers.ModelSerializer):
         }
 
         return super().validate(attrs)
-
-
-    # def validate_email(self, value):
-    #     user = self.context['request'].user
-
-    #     if CustomUser.objects.exclude(pk=user.pk).filter(email=value).exists():
-    #         raise serializers.ValidationError({"email": "This email is already in use."})
-
-    #     return value
-
-    # def validate_username(self, value):
-
-    #     user = self.context['request'].user
-    #     if CustomUser.objects.exclude(pk=user.pk).filter(username=value).exists():
-    #         raise serializers.ValidationError({"username": "This username is already in use."})
-
-    #     return value
-
-    # def update(self, instance, validated_data):
-    #     instance.email = validated_data['email']
-    #     instance.username = validated_data['username']
-
-    #     instance.save()
-
-    #     return instance
 
 
 class LogoutSerializer(serializers.Serializer):
@@ -392,18 +352,10 @@ class UpdateStudentSerializer(serializers.ModelSerializer):
             'github_profile': {'required': True},
         }
 
-    # def validate_email(self, value):
-    #     user = self.context['request'].user
-
-    #     if Student.objects.exclude(pk=user.pk).filter(email=value).exists():
-    #         raise serializers.ValidationError({"email": "This email is already in use."})
-
-    #     return value
 
     def update(self, instance, validated_data):
         instance.first_name = validated_data['first_name']
         instance.surname = validated_data['surname']
-        #instance.profile_pic = validated_data['profile_pic']
         instance.cohort = validated_data['cohort']
         instance.email = validated_data['email']
         instance.bio = validated_data['bio']
@@ -427,7 +379,6 @@ class UpdateProjectSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.title = validated_data['title']
-        #instance.project_image = validated_data['project_image']
         instance.description = validated_data['description']
         instance.owner = validated_data['owner']
         instance.cohort = validated_data['cohort']
@@ -440,11 +391,9 @@ class UpdateProjectSerializer(serializers.ModelSerializer):
 
 
 class UpdateProjectMembersSerializer(serializers.ModelSerializer):
-    #members = StudentSerializer(many=True,)
     class Meta:
         model = Project
         fields = ('members',)
-        #filter_horizontal = ('members',)
         extra_kwargs = {
             'members': {'required': True},
         }
@@ -494,37 +443,3 @@ class SetNewPasswordSerializer(serializers.Serializer):
             raise AuthenticationFailed('The password reset link is invalid', 401)
 
         return super().validate(attrs)
-
-
-# class UpdateProjectImageSerializer(serializers.ModelSerializer):
-    
-#     class Meta:
-#         model = Project
-#         fields = ('project_image',)
-#         extra_kwargs = {
-#             'project_image': {'required': True},
-#         }
-
-#     def update(self, instance, validated_data):
-#         instance.project_image = validated_data['project_image']
-
-#         instance.save()
-
-#         return instance
-
-
-# class UpdateProfilePicSerializer(serializers.ModelSerializer):
-    
-#     class Meta:
-#         model = Student
-#         fields = ('profile_pic',)
-#         extra_kwargs = {
-#             'profile_pic': {'required': True},
-#         }
-
-#     def update(self, instance, validated_data):
-#         instance.profile_pic = validated_data['profile_pic']
-
-#         instance.save()
-
-#         return instance

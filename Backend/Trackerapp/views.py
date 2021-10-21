@@ -68,9 +68,6 @@ class RegisterView(generics.GenericAPIView):
         user = CustomUser.objects.get(email=user_data['email'])
         token = RefreshToken.for_user(user).access_token
 
-        # current_site=get_current_site(request).domain
-        # relativeLink=reverse('email-verify')
-        # absoluteurl = 'http://'+current_site+relativeLink+"?token="+str(token)
         email_body='Welcome to Trackerapp  \n'
         data={'email_body':email_body,'to_email':user.email, 'email_subject':'Welcome'}
 
@@ -342,10 +339,6 @@ class CohortProjectsView(generics.ListAPIView):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     filterset_fields = ['style', 'cohort',]
-    # filter_fields = (
-    #     'style',
-    #     'cohort',
-    # )
 
     def get_cohort(self, pk):
         try:
@@ -489,39 +482,3 @@ class CurrentUserProfileView(generics.ListAPIView):
         profile = current_user.profile
         serializers = StudentSerializer(profile)
         return Response(serializers.data)
-
-
-# class UploadProjectImageView(APIView):
-#     permission_classes = (IsAuthenticated,)
-#     parser_classes = (
-#         MultiPartParser,
-#         JSONParser,
-#     )
-
-#     @staticmethod
-#     def post(request):
-#         file = request.data.get('project_image')
-
-#         upload_data = cloudinary.uploader.upload(file)
-#         return Response({
-#             'status': 'success',
-#             'data': upload_data,
-#         }, status=201)
-
-
-# class UploadProfilePicView(APIView):
-#     permission_classes = (IsAuthenticated,)
-#     parser_classes = (
-#         MultiPartParser,
-#         JSONParser,
-#     )
-
-#     @staticmethod
-#     def post(request):
-#         file = request.data.get('profile_pic')
-
-#         upload_data = cloudinary.uploader.upload(file)
-#         return Response({
-#             'status': 'success',
-#             'data': upload_data,
-#         }, status=201)

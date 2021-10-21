@@ -3,7 +3,6 @@ import { ProjectService } from './services/project.service';
 import { AuthService } from './_services/auth.service';
 import { UserService } from './services/user.service';
 import { throwError } from 'rxjs';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -24,9 +23,9 @@ export class AppComponent implements OnInit {
 
     };
   }
-  logout(){
-    this.authService.doLogout()
-  }
+  // logout(){
+  //   this.authService.doLogout()
+  // }
 }
 
 

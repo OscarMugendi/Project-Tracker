@@ -40,8 +40,8 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(this.register).subscribe((res)=>{
       if (res.result){
         this.signupForm.reset()
-        this.router.navigate(['login']);
       }
+      this.router.navigate(['login']);
     })
   }
 
